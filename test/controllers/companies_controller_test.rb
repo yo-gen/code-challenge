@@ -60,9 +60,14 @@ class CompaniesControllerTest < ApplicationSystemTestCase
 
   test "Destroy" do
     visit company_path(@company)
-    assert_difference('Company.count', -1) do
-      click_link "Delete"
+    company_count = Company.count
+    page.accept_confirm do
+      click_link 'Delete'
     end
+    assert_equal company_count-1, Company.count
   end
+
+  # test "Create shows error when using different domain for email" do
+  # end
 
 end
