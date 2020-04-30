@@ -8,7 +8,7 @@ class Company < ApplicationRecord
 
   def email_domain
     if email.split("@").last != "getmainstreet.com"
-      errors.add(:email, 'Sorry! Only company domain emails can be used for creating emails.')
+      errors.add(:email, 'domain can only be getmainstreet.com')
     end unless email.blank?
   end
 

@@ -47,7 +47,7 @@ class CompaniesControllerTest < ApplicationSystemTestCase
       fill_in("company_name", with: "New Test Company")
       fill_in("company_zip_code", with: "28173")
       fill_in("company_phone", with: "5553335555")
-      fill_in("company_email", with: "new_test_company@test.com")
+      fill_in("company_email", with: "new_test_company@getmainstreet.com")
       click_button "Create Company"
     end
 
@@ -60,14 +60,31 @@ class CompaniesControllerTest < ApplicationSystemTestCase
 
   test "Destroy" do
     visit company_path(@company)
-    company_count = Company.count
-    page.accept_confirm do
-      click_link 'Delete'
+
+    @old_company_count = Company.count
+
+    assert_difference('Company.count', -1) do
+      accept_alert do
+        click_link('Delete')
+      end
+      sleep 1
     end
-    assert_equal company_count-1, Company.count
   end
 
-  # test "Create shows error when using different domain for email" do
-  # end
+  test "updating city and state after zipcode updation" do
+    visit edit_company_path(@company)
+
+    within("form#edit_company_#{@company.id}") do
+      fill_in("company_zip_code", with: "30301")
+      click_button "Update Company"
+    end
+
+    assert_text "Changes Saved"
+
+    @company.reload
+    assert_equal "30301", @company.zip_code
+    assert_equal "Atlanta", @company.city
+    assert_equal "GA", @company.state
+  end
 
 end
