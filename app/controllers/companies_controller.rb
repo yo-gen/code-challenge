@@ -31,7 +31,22 @@ class CompaniesController < ApplicationController
     else
       render :edit
     end
-  end  
+  end
+
+  # DELETE /companies/:id
+  def destroy
+    @company.destroy
+    if @company.destroyed?
+      redirect_to_path = companies_path
+      flash[:notice] = "Company successfully destroyed."
+    else
+      redirect_to_path = company_path(@company)
+      flash[:error] = @company.errors.full_messages.join(', ')
+    end
+    respond_to do |format|
+      format.html { redirect_to redirect_to_path }
+    end
+  end
 
   private
 
