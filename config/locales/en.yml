@@ -33,3 +33,4 @@ en:
   hello: "Hello world"
   company:
     invalid_email: "must be from the getmainstreet.com domain"
+    invalid_zipcode: "is invalid"

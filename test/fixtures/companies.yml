@@ -1,7 +1,9 @@
 hometown_painting:
   name: Hometown Painting
   email: "hometown_painting@getmainstreet.com"
-  zip_code: "93003"
+  zip_code: "30301"
+  city: "Atlanta"
+  state: "GA"
   phone: "555-808-8888"
 
 wolf_painting:
@@ -13,22 +15,21 @@ wolf_painting:
 thompson_patining:
   name: "Thompson Family Painting"
   email: "thompson_patining@getmainstreet.com"
-  zip_code: "37201"
+  zip_code: "ora-37201"
   phone: "555-808-8888"
 
 armstrong_painting:
   name: "Armstrong Painting"
   email: "armstrong_painting@getmainstreet.com"
-  zip_code:
   phone: "555-808-8888"
 
 marcus_painting:
   name: "Marcus Paint"
-  zip_code:
+  zip_code: "72201"
   phone: "555-808-8888"
 
 brown_painting:
   name: "Brown Residential Painting"
   email: "brown_painting@brown_painting.com"
-  zip_code:
+  zip_code: "85001"
   phone: "555-808-8888"
