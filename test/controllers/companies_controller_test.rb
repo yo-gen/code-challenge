@@ -47,7 +47,7 @@ class CompaniesControllerTest < ApplicationSystemTestCase
       fill_in("company_name", with: "New Test Company")
       fill_in("company_zip_code", with: "28173")
       fill_in("company_phone", with: "5553335555")
-      fill_in("company_email", with: "new_test_company@test.com")
+      fill_in("company_email", with: "new_test_company@getmainstreet.com")
       click_button "Create Company"
     end
 
@@ -56,6 +56,36 @@ class CompaniesControllerTest < ApplicationSystemTestCase
     last_company = Company.last
     assert_equal "New Test Company", last_company.name
     assert_equal "28173", last_company.zip_code
+  end
+
+  test "Valid Email for Company" do
+    visit new_company_path
+
+    within("form#new_company") do
+      fill_in("company_name", with: "Invalid Email Company")
+      fill_in("company_zip_code", with: "89899")
+      fill_in("company_phone", with: "5553335555")
+      fill_in("company_email", with: "new_test_company@gmail.com")
+      assert_no_difference('Company.count') do
+        click_button 'Create Company'
+      end
+    end
+  end
+
+  test "Company create with Blank Email" do
+    visit new_company_path
+
+    within("form#new_company") do
+      fill_in("company_name", with: "Blank Email Company")
+      fill_in("company_zip_code", with: "93003")
+      click_button 'Create Company'
+    end
+
+    assert_text "Saved"
+
+    last_company = Company.last
+    assert_equal "Blank Email Company", last_company.name
+    assert_equal "93003", last_company.zip_code
   end
 
 end
