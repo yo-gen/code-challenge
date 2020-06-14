@@ -51,6 +51,12 @@ class CompaniesControllerTest < ApplicationSystemTestCase
       click_button "Create Company"
     end
 
+  test "Delete" do
+    visit company_path(@company)
+    assert_difference('Company.count', -1) do
+      click_link "Delete"
+    end
+  end
     assert_text "Saved"
 
     last_company = Company.last

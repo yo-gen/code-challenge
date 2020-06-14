@@ -24,6 +24,14 @@ class CompaniesController < ApplicationController
   def edit
   end
 
+  def destroy
+    @company.destroy
+    respond_to do |format|
+      format.html { redirect_to companies_path, notice: 'Company was removed successfully.' }
+      format.json { head :no_content }
+    end
+  end
+
   def update
     if @company.update(company_params)
       redirect_to companies_path, notice: "Changes Saved"
