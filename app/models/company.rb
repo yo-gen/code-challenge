@@ -20,6 +20,7 @@ class Company < ApplicationRecord
   end
 
   def set_city_and_state
+  	puts 'agarwal'
 	zipcode_details = ZipCodes.identify(zip_code)
     unless zipcode_details.nil?
 	    self.city = zipcode_details[:city]
