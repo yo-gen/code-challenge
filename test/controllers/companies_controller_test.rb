@@ -78,4 +78,19 @@ test "Valid Email for Company" do
   end
 end
 
+test "Update: city and state after zipcode update" do
+
+    within("form#edit_company_#{@company.id}") do
+      fill_in("company_zip_code", with: "30301")
+      click_button "Update Company"
+    end
+
+    assert_text "Changes Saved"
+
+    @company.reload
+    assert_equal "30301", @company.zip_code
+    assert_equal "Atlanta", @company.city
+    assert_equal "GA", @company.state
+  end
+
 end
