@@ -2,7 +2,7 @@
 
 Welcome to the Main Street code challenge. This repository includes a very basic rails app to be used to assessment and testing purposes only.
 
-Note: This codebase is not nearly or fully representative of our platform however it's a good small sample of the kinds of technology and problems we are solving. 
+Note: This codebase is not nearly or fully representative of our platform however it's a good small sample of the kinds of technology and problems we are solving.
 
 ## Getting Started
 
@@ -25,22 +25,48 @@ Once that runs you should be able to run the following 2 commands in separate te
 
 ## Challenges
 
-### ☐ Add a way to delete companies
+### **Challenge Steps**
+
+Please refer to our [Engineering Wiki](https://www.notion.so/getmainstreet/Engineering-Wiki-92df623daaeb4022892d331feb20aadf) for our best practices and recommended approaches.
+
+You can also feel free to look at [past PR's](https://github.com/main-street/code-challenge/pulls) for how other developers have solved some of these challenges.
+
+##### **☐ Add a way to delete companies**
 
 For companies, there isn't currently a way to destroy them. There should be a confirmation of the action. Some kind of "Are you sure?" message.
 
-### ☐ Add Custom Validation to company email Address (When Present)
+_Assessing: Basic Rails Knowledge and established best practices._
 
-All email addresses for new companies should only be a @getmainstreet.com domain. A custom error should render when attempting to create or update a company when the email does not match this domain. This should only be when email is present. Blank emails can be ignored.
+##### **☐ Add Custom Validation to company email**
 
-### ☐ Add City State To Companies from Zip Code.
+(When Present) All email addresses for new companies should only be a @getmainstreet.com domain. A custom error should render when attempting to create or update a company when the email does not match this domain. This should only be when email is present. Blank emails can be ignored. Should validate on both front end and back end.
 
-For each company "Show" page there is a placeholder for the City, State for that company. You'll need to leverage the zip code to have that value render the actual City, State. For example: Nashville, TN. It is strongly recommended to use the ZipCodes gem that is already in this project.
+_Assessing: Basic Rails Knowledge and established best practices._
+
+##### **☐ Add City State To Companies from Zip Code**
+
+For each company "Show" page there is a placeholder for the **City, State** for that company. You'll need to leverage the zip code to have that value render the actual **City, State**. For example: **Nashville, TN** You might want to take a look at the [ZipCodes gem](https://github.com/monterail/zip-codes) that is already in this project.
 
 Every time the company's zip code is updated this city and state should be updated.
 
 The City and State should be added as attributes to the Company object.
 
-### ☐ Include test coverage for all your changes
+_Assessing: Back end skills. Ability to implement more back-end heavy, basic business logic in the context of rails while leveraging established Gems / Libraries._
+
+##### **☐ Include a way to set a brand color**
+
+Companies should be able to pick or enter a color and have that color render on the company show page. Ideally, this interface should feel responsive and interactive in some way.
+
+_Assessing: Front end skills. Basic UX and UI Instinct. Ability to leverage CSS / HTML / JavaScript to build an engaging and reactive UI._
+
+##### **☐ Include test coverage for all your changes**
 
 For all functionality extend or add tests from existing tests.
+
+_Assessing: Ability to produce clean tests and documentation for code._
+
+##### **☐ Suggest a new task for this challenge**
+
+Write up a proposed challenge to add to this repository for assesing developers. Do not solve the code challenge. Just write the task, and why this would make a good challenge to include for future developers.
+
+_Assessing: Engineering instinct, writing, ability to document up a deliverable concisely._
