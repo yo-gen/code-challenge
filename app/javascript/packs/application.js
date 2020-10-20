@@ -8,17 +8,10 @@ require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
 
-window.Rails = Rails;
-
 import "css/site";
 
 import "bootstrap";
 import "selectize";
-
-$(document).on("turbolinks:load", () => {
-  $('[data-toggle="tooltip"]').tooltip();
-  $('[data-toggle="popover"]').popover();
-});
 
 require("trix");
 require("@rails/actiontext");

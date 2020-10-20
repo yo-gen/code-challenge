@@ -3,14 +3,17 @@
     <h3>JavaScript Example</h3>
     <p>Our application leverages <a href="https://stimulusjs.org/">Stimulus.js</a> to handle our interactive elements.</p>
     <p>This view and <code>example_controller.js</code> are intended to provide with a clear example of our best practices around interactvitiy.</p>
-    <p>If you are unfamiliar with this approach, feel free to impliement whatever JavaScript approach you like.</p>
-    <div data-controller="example">
-      <div class="form-group">
-        <input data-target="example.source" class="form-control"></input>
+    <p><small>Note: If you are really unfamiliar with this approach, you can also feel free to impliement whatever JavaScript approach you like.</small></p>
+
+    <div class="bg-light rounded p-2">
+      <div data-controller="example">
+        <div class="form-group">
+          <label>Input</label>
+          <input data-target="example.textToReverse" class="form-control" placeholder="Enter some text here..."></input>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success" data-action="click->example#reverse" disabled>Reverse Input</button>
+        </div>
       </div>
-      <div class="form-group">
-        <button class="btn btn-success" data-action="click->example#button">Example</button>
-      </div>
-    </div>
     </div>
 </div>
