@@ -43,6 +43,7 @@ class CompaniesController < ApplicationController
       :phone,
       :email,
       :owner_id,
+      services: []
     )
   end
 
