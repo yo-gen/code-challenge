@@ -7,6 +7,6 @@ export default class extends Controller {
     event.preventDefault;
     this.noticeTarget.classList.remove("d-none");
     this.element.querySelector(".clipboard-button").classList.add("d-none");
-    navigator.clipboard.writeText(this.sourceTarget.innerHTML);
+    navigator.clipboard.writeText(this.sourceTarget.value);
   }
 }
