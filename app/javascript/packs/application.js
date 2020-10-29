@@ -11,7 +11,6 @@ require("channels");
 import "css/site";
 
 import "bootstrap";
-import "selectize";
 
 require("trix");
 require("@rails/actiontext");
