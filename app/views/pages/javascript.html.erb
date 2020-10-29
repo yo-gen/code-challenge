@@ -75,15 +75,14 @@
 
     <div data-controller="tags" class="form-group">
         <label>Interactive Tags Selector</label>
-        <input multiple="multiple" data-target="tags.selectize" class="selectized" value="apple,banana,orange"></input>
+        <%= select_tag :tags, options_for_select(["apple", "banana", "orange"]), multiple: true, "data-target": "tags.select2", class: "form-control" %>
       </div>
 
     <div class="py-3 mb-5">
       <h3>Breaking this Example Form down</h3>
       <ul>
-        <li>leverageing NPM we are able to <code>yarn add selectize</code> via console to bring in the dependncy</li>
-        <li>From there, we can then wire up a basic controller in <code>app/javascript/controllers/tag_selector.js</code> to bind the selectize library to the input.</li>
-        <li><small>Note: at time of this writing thee's a small issue with the CSS import from the selectize library, ideally all of the selectize dpendencies are brought in via NPM, bonus points if you can fix this in your challenge submission. :) </small></li>
+        <li>leverageing NPM we are able to <code>yarn add select2</code> via console to bring in the dependency</li>
+        <li>From there, we can then wire up a basic controller in <code>app/javascript/controllers/tag_selector.js</code> to bind the select2 library to the input.</li>
       </ul>
     </div>
 

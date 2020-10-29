@@ -1,21 +1,16 @@
 import { Controller } from "stimulus";
+require("select2/dist/css/select2")
+require("select2-bootstrap-theme/dist/select2-bootstrap")
+
+import Select2 from "select2"
 
 export default class extends Controller {
-  static targets = ["selectize"];
+  static targets = ["select2"];
 
   initialize() {
-    // This inits the selectize with options
-    var $input = $(this.selectizeTarget).selectize({
-      plugins: ["remove_button"],
-      delimiter: ",",
-      persist: false,
+    var $input = $(this.select2Target).select2({
       placeholder: "Search for or Add a Tag",
-      create: function(input) {
-        return {
-          value: input,
-          text: input
-        };
-      }
+      tags: true
     });
   }
 }
