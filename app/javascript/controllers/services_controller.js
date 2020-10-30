@@ -9,8 +9,7 @@ export default class extends Controller {
 
   initialize() {
     var $input = $(this.select2Target).select2({
-      placeholder: "Choose one or multiple services",
-      tags: true
+      placeholder: "Choose one or multiple services"
     });
   }
 }

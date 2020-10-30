@@ -23,6 +23,11 @@ Once that runs you should be able to run the following 2 commands in separate te
 1.  `rails s` - this will start the rails server locally.
 2.  `bin/webpack-dev-server` - this will start to watch and recompile the JavaScripts found in `app/javascript`
 
+Note
+
+- This repository was initialized using [JumpStart](https://github.com/excid3/jumpstart)
+- We can also use `foreman` to spin up multiple processes at the same time`foreman start -f Procfile.dev`
+
 ## Challenges
 
 ### **Challenge Steps**

@@ -15,11 +15,27 @@
       <pre><mark>☝️ This is what needs to be udpated. Examples: Atlanta, GA or Nashvile, TN</mark></pre>
     </div>
   </div>
-  <% if @company.description.present? %>
-    <div class="bg-light p-5">
+
+  <div class="row bg-light">
+    <div class="col-12 col-lg-8 p-lg-5 pt-4">
       <%= @company.description %>
     </div>
-  <% end %>
+    <div class="col-12 col-lg-4 pt-lg-5">
+      <h4>Services</h4>
+      <% @company.services.reject(&:blank?).each do |service| %>
+        <p><%= service %></p>
+      <% end %>
+      <h4>Contact</h4>
+        <div class="form-group" data-controller="clipboard">
+          <p><%= @company.phone %><br>
+          <input type="hidden" value="<%= @company.phone %>" data-target="clipboard.source"></input>
+          <a data-action="clipboard#copy" class="clipboard-button pointer text-decoration-none text-dark"> copy</a>
+          <a data-target="clipboard.notice" class="clipboard-button pointer d-none text-decoration-none text-dark" class="d-none"> copied</a> 
+          </p>         
+        </div>
+    </div>
+  </div>
+
   <div class="bg-success text-white text-center py-3">
     <p class="lead"><%= @company.phone %> — <%= @company.email %></p>
   </div>
