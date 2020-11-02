@@ -58,6 +58,16 @@
       </div>
     </div>
 
+    <div class="row my-lg-3">
+      <div class="col-lg-3">
+        <label><strong>Services</strong><br><small class="text-muted">List the services offered by this company</small></label>
+      </div>
+      <div class="col-lg offset-lg-1">
+          <div data-controller="services" class="form-group">
+            <%= f.select :services, options_for_select(["Interior Painting", "Commercial Painting", "Exterior Painting"], @company.services), {include_blank: true, required: false}, multiple: true, "data-target": "services.select2", class: "form-control" %>
+          </div>
+      </div>
+    </div>
 
     <div class="row my-lg-3">
       <div class="col">
