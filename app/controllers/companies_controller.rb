@@ -25,13 +25,24 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    if @company.update(company_params)
-      redirect_to companies_path, notice: "Changes Saved"
-    else
-      render :edit
+    respond_to do |format|
+      if @company.update(company_params)
+        format.html { redirect_to companies_path, flash: { notice: "Changes Saved" }}
+        format.json { head :ok }
+      else
+        format.html { render :edit }
+        format.json { head :bad_request }
+      end
     end
   end  
 
+  def destroy
+    if @company.destroy
+      redirect_to companies_path, notice: 'Company was successfully deleted.'
+    else
+      render :edit, alert: "Failed to delete company"
+    end
+  end
   private
 
   def company_params
@@ -43,6 +54,7 @@ class CompaniesController < ApplicationController
       :phone,
       :email,
       :owner_id,
+      :brand_color,
       services: []
     )
   end

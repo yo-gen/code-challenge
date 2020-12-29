@@ -8,5 +8,7 @@ module ApplicationHelper
       notice: "alert-info"
     }.stringify_keys[flash_type.to_s] || flash_type.to_s
   end
-  
+  def form_errors_for(object=nil)
+  	render('shared/form_errors', object: object) unless object.blank?
+	end
 end
