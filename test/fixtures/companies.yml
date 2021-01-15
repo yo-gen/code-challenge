@@ -39,3 +39,12 @@ brown_painting:
   zip_code:
   phone: "555-808-8888"
   services: "{Interior Painting}"   
+
+new_company:
+  name: "New Company"
+  email: "hello@getmainstreet.com"
+  zip_code: "93003"
+  phone: "3333333"
+  services: "{Interior Painting}"  
+
+invalid_email_address: "brown_painting@brown_painting.com"
