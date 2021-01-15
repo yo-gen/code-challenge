@@ -56,6 +56,7 @@ class CompaniesController < ApplicationController
       :legal_name,
       :description,
       :zip_code,
+      :color,
       :phone,
       :email,
       :owner_id,
