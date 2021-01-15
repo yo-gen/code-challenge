@@ -7,9 +7,17 @@ class CompaniesController < ApplicationController
 
   def new
     @company = Company.new
+    if @company.color.nil?
+      @company.color = Rails.configuration.default_background_color
+    end
   end
 
   def show
+    if !@company.zip_code.nil?
+      @zip_code_params = ZipCodes.identify(@company.zip_code)
+      @company.city = @zip_code_params && @zip_code_params[:city]
+      @company.state = @zip_code_params && @zip_code_params[:state_code] + " or " + @zip_code_params[:state_name]
+    end
   end
 
   def create
@@ -17,7 +25,7 @@ class CompaniesController < ApplicationController
     if @company.save
       redirect_to companies_path, notice: "Saved"
     else
-      render :new
+      render :new, notice: "Oops, Something went wrong!"
     end
   end
 
@@ -57,6 +65,9 @@ class CompaniesController < ApplicationController
 
   def set_company
     @company = Company.find(params[:id])
+    if @company.color.nil?
+      @company.color = Rails.configuration.default_background_color
+    end
   end
   
 end
