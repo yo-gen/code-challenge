@@ -20,4 +20,4 @@ class CompanyModelTest < ActiveSupport::TestCase
 		assert @company.valid?
   end
 
- 
+end
