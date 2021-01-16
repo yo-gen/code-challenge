@@ -9,8 +9,7 @@ class CompaniesController < ApplicationController
     @company = Company.new
   end
 
-  def show
-  end
+  def show; end
 
   def create
     @company = Company.new(company_params)
