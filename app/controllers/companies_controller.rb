@@ -36,10 +36,14 @@ class CompaniesController < ApplicationController
   end  
 
   def destroy
-    @company.destroy
-    respond_to do |format|
-      format.html { redirect_to companies_path, notice: 'Company was successfully deleted' }
-      format.json { head :no_content }
+    if @company.destroy
+      respond_to do |format|
+        format.html { redirect_to companies_path, notice: 'Company was successfully deleted' }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to companies_path, notice: 'Unable to delete' }
+      end  
     end
   end
 
