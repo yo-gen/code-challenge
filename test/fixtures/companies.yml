@@ -46,5 +46,3 @@ new_company:
   zip_code: "93003"
   phone: "3333333"
   services: "{Interior Painting}"  
-
-invalid_email_address: "brown_painting@brown_painting.com"

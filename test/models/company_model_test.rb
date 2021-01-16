@@ -11,7 +11,7 @@ class CompanyModelTest < ActiveSupport::TestCase
     end
 
     test 'is company valid with invalid email?' do
-        @company.email = companies(:invalid_email_address)
+        @company.email = "brown_painting@brown_painting.com"
         refute @company.valid?
       assert_not_nil @company.errors[:email]
     end
