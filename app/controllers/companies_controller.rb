@@ -14,10 +14,12 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-    if @company.save
-      redirect_to companies_path, notice: "Saved"
+    
+    update_location
+    if @company.valid_email? && @company.save
+      redirect_to companies_path(@company), notice: "Saved"
     else
-      render :new
+      redirect_back fallback_location: new_company_path, alert: (@company.errors.messages.map { |k,v| "#{k} #{v[0]}" }&.first.presence || t('invalid_email'))
     end
   end
 
@@ -25,14 +27,31 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    if @company.update(company_params)
+    update_location unless @company.zip_code == company_params[:zip_code]
+    if @company.update(company_params) && @company.valid_email? 
       redirect_to companies_path, notice: "Changes Saved"
     else
-      render :edit
+      redirect_back fallback_location: edit_company_path(@company), alert: (@company.errors.messages.map { |k,v| "#{k} #{v[0]}" }&.first.presence || t('invalid_email'))
     end
   end  
 
+  def destroy
+    @company.destroy
+    respond_to do |format|
+      format.html { redirect_to companies_path, notice: 'Company was successfully deleted' }
+      format.json { head :no_content }
+    end
+  end
+
   private
+
+  def update_location
+    location = ZipCodes.identify(company_params[:zip_code])
+    if location
+      @company.state = location[:state_name]
+      @company.city = location[:city]
+    end
+  end
 
   def company_params
     params.require(:company).permit(
@@ -42,6 +61,7 @@ class CompaniesController < ApplicationController
       :zip_code,
       :phone,
       :email,
+      :color,
       :owner_id,
       services: []
     )

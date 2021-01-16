@@ -58,4 +58,53 @@ class CompaniesControllerTest < ApplicationSystemTestCase
     assert_equal "28173", last_company.zip_code
   end
 
+  ##############
+
+  test 'Destroy' do
+    visit companies_path
+
+    companies_count = find('tr').all('li').size
+    first('.list-group li a.btn-danger').click
+
+    page.driver.browser.switch_to.alert.accept
+
+    assert_text 'The company has been destroyed successfully!'
+    assert_equal find('.list-group').all('li').size, (companies_count - 1)
+  end
+
+  test 'Validate Email format' do
+    visit edit_company_path(@company)
+
+    within('form#company-form') do
+      fill_in('text-mail', with: 'test@xyz.com', fill_options: { clear: :backspace })
+      accept_alert(with: t('invalid_email')) do
+        click_button 'Update Company'
+      end
+    end
+  end
+
+  test 'Set Brand Color' do
+    visit edit_company_path(@company)
+
+    within('form#company-form') do
+      fill_in('company_color', with: '#ffc107', fill_options: { clear: :backspace })
+      click_button 'Update Company'
+    end
+
+    @company.reload
+    assert_equal '#ffc107', @company.brand_color
+  end
+
+  test 'Assign state and city fields' do
+    visit edit_company_path(@company)
+
+    within('form#company-form') do
+      fill_in('company_zip_code', with: '22031', fill_options: { clear: :backspace })
+      click_button 'Update Company'
+    end
+
+    @company.reload
+    assert_equal 'Fairfax', @company.city
+    assert_equal 'Virginia', @company.state
+  end
 end

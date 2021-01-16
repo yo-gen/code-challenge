@@ -26,6 +26,18 @@
 
     <div class="row my-lg-3">
       <div class="col-lg-3">
+        <label><strong>Color</strong><br><small class="text-muted">Theme of company homepage</small></label>
+      </div>
+      <div class="col-lg offset-lg-1">
+        <div class="form-group">
+          <%= f.color_field :color, required: true %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row my-lg-3">
+      <div class="col-lg-3">
         <label><strong>Description</strong><br><small class="text-muted">Rich text marketing description</small></label>
       </div>
       <div class="col-lg-8 offset-lg-1">
@@ -53,7 +65,7 @@
       </div>
       <div class="col-lg offset-lg-1">
         <div class="form-group">
-          <%= f.text_field :email, class: "form-control", placeholder: "hello@company.com"%>
+          <%= f.text_field :email, class: "form-control", placeholder: "hello@getmainstreet.com"%>
         </div>
       </div>
     </div>
@@ -72,9 +84,26 @@
     <div class="row my-lg-3">
       <div class="col">
         <div class="form-group">
-          <%= f.submit class: "btn btn-success"%>
+          <%= f.submit class: "btn btn-success submit-form" %>
         </div>
       </div>
     </div>
   <% end %>
 </div>
+
+
+<script type="text/javascript">
+  $('.submit-form').on('click', function(e){
+    e.preventDefault();
+    var companyInput = $("#company_email") 
+    if(companyInput.val().split("@")[1] != 'getmainstreet.com'){
+      companyInput.css({
+        'border': '1px solid red'
+      })
+      companyInput.after('<span class="text-danger"> <%= t('invalid_email') %> </span>')
+      return false;
+    }else{
+      $('form').submit()
+    }
+  })
+</script>

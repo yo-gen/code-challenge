@@ -1,3 +1,9 @@
+<style type="text/css">
+  .rounded-10{
+    border-radius: 10px;
+  }
+</style>
+
 <div class="container py-5">
   <h3>Company</h3>
   <div class="row">
@@ -5,14 +11,15 @@
       <%= link_to "< Companies", companies_path %>
     </div>
     <div class="col text-right">
-      <%= link_to "Edit", edit_company_path %>
+      <%= link_to "Delete", @company, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      <%= link_to "Edit", edit_company_path, class: "btn btn-info" %>
     </div>
   </div>
-  <div class="bg-success">
+  <div class="bg-success rounded-10" style="margin-top: 20px; background-color: <%= @company.color %> !important">
     <div class="container p-5 text-white">
       <h1><%= @company.name %></h1>
-      <h3><mark>City, State</mark></h3>
-      <pre><mark>☝️ This is what needs to be udpated. Examples: Atlanta, GA or Nashvile, TN</mark></pre>
+      <h3><mark><%= @company.city %>, <%= @company.state %></mark></h3>
+
     </div>
   </div>
 
@@ -36,7 +43,7 @@
     </div>
   </div>
 
-  <div class="bg-success text-white text-center py-3">
+  <div class="bg-success rounded-10 text-white text-center py-3" style="margin-bottom: 20px; background-color: <%= @company.color %> !important">
     <p class="lead"><%= @company.phone %> — <%= @company.email %></p>
   </div>
 </div>
