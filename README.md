@@ -98,6 +98,7 @@ Since this a public repository, raising a Pull Request will not be the same as w
 - Any changes made in the original repository would not be synced to forked repository in your personal git account. Below commands enable us to track the original repository as a remote of the fork
    ```
      git remote add --track master upstream https://github.com/main-street/code-challenge.git
+     git fetch upstream
    ```
 - Create a new branch for your changes
    ```
