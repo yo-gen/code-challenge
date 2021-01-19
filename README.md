@@ -82,3 +82,33 @@ _Assessing: Engineering instinct, writing, ability to document up a deliverable 
 - Originality and creativity in given solutions
 - Improving the overall UX of this challenge
 - Deploying your solutions to a server
+
+
+## How to raise a Pull request?
+
+Since this a public repository, raising a Pull Request will not be the same as when you're a collaborator. The Instructions below will help you push the changes to the code challenge repo —
+
+- Fork the project to your personal Github
+- Clone the challenge to your local from your new forked repo in your personal git account
+  ```
+    git clone <forked account — main street coding challenge https url>
+    
+    example: git clone https://github.com/Sushanthbc/code-challenge.git
+  ```
+- Any changes made in the original repository would not be synced to forked repository in your personal git account. Below commands enable us to track the original repository as a remote of the fork
+   ```
+     git remote add --track master upstream https://github.com/main-street/code-challenge.git
+   ```
+- Create a new branch for your changes
+   ```
+    git checkout -b readme-update upstream/master
+   ```
+- Make your changes, stage and commit files necessary.
+
+- Push the changes to remote
+  ```
+   git push -u origin readme-update origin
+  ```
+- You can now go to Github, and raise a PR with necessary details.
+
+- Happy Coding, and All the best, please don't hesitate to shoot an email to Recruitment team, if you have any issues while pushing the code.
