@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  errors:
+    main_street_domain_email_error: "must end with @getmainstreet.com"
+    main_street_domain_email_message: "Email must end with @getmainstreet.com"

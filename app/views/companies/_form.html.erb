@@ -1,5 +1,5 @@
-<div class="py-5">
-  <%= form_for @company do |f| %>
+<div class="py-5" style="background-color: <%= @company.brand_color || "000000" %>">
+  <%= form_for(@company, html: { "data-controller": "colors", "data-target": "colors.formColor"}) do |f| %>
 
     <div class="row my-lg-3">
       <div class="col-lg-3">
@@ -53,7 +53,7 @@
       </div>
       <div class="col-lg offset-lg-1">
         <div class="form-group">
-          <%= f.text_field :email, class: "form-control", placeholder: "hello@company.com"%>
+          <%= f.text_field :email, class: "form-control", placeholder: "hello@getmainstreet.com", pattern: ".+@getmainstreet\.com", required: false, title: t(:'errors.main_street_domain_email_message') %>
         </div>
       </div>
     </div>
@@ -66,6 +66,14 @@
           <div data-controller="services" class="form-group">
             <%= f.select :services, options_for_select(["Interior Painting", "Commercial Painting", "Exterior Painting"], @company.services), {include_blank: true, required: false}, multiple: true, "data-target": "services.select2", class: "form-control" %>
           </div>
+      </div>
+    </div>
+    <div class="row my-lg-3">
+      <div class="col-lg-3">
+        <label><strong>Brand Color</strong><br><small class="text-muted">Choose brand color of the company</small></label>
+      </div>
+      <div class="col-lg offset-lg-1">
+        <%= f.color_field :brand_color, class: "form-control", placeholder: "Company Brand Color", "data-target": "colors.selectedColor", "data-action": "input->colors#changebg" %>
       </div>
     </div>
 
